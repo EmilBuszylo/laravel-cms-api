@@ -1,9 +1,13 @@
 {
-    "name": "laravel/laravel",
+    "name": "Laravel CMS Api",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "CMS REST API supported by Laravel",
     "keywords": [
         "framework",
+        "laravel",
+        "CMS",
+        "API",
+        "RES",
         "laravel"
     ],
     "license": "MIT",

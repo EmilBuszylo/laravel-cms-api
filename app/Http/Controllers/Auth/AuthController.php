@@ -91,8 +91,8 @@ class AuthController extends Controller
             'token_type' => 'Bearer',
             'expires_at' => Carbon::parse(
                 $tokenResult->token->expires_at
-            )->toDateTimeString()
-        ]);
+            )->toDateTimeString(),
+            ], 200);
     }
 
     /**
@@ -104,8 +104,22 @@ class AuthController extends Controller
     {
         $request->user()->token()->revoke();
         return response()->json([
-            'message' => 'Successfully logged out'
-        ]);
+            'message' => 'Successfully logged out',
+        ], 200);
+    }
+
+    /**
+     * Remove user
+     */
+        public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->active = false;
+        $user->delete();
+
+        return response()->json([
+            'message' => 'User has been deleted Successfully',
+        ], 202);
     }
 
     /**

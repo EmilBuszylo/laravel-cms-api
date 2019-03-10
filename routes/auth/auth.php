@@ -15,4 +15,10 @@ Route::group([
         Route::get('logout', 'AuthController@logout');
         Route::get('user', 'AuthController@user');
     });
+
+    Route::group([
+        'middleware' => ['auth:api','role_or_permission:super-admin' ]
+    ], function() {
+        Route::delete('destroy/{id}', 'AuthController@destroy');
+    });
 });
